@@ -96,19 +96,21 @@ vertical_alignment = 1
 
 [node name="GameOverLabel" type="Label" parent="HUD" unique_id=1995139672]
 visible = false
-offset_left = 830.0
-offset_top = 385.0
-offset_right = 922.0
-offset_bottom = 408.0
+offset_left = 619.0
+offset_top = 372.0
+offset_right = 1077.0
+offset_bottom = 482.0
 offset_transform_scale = Vector2(6.495, 6.495)
+theme_override_font_sizes/font_size = 80
 text = "GAME OVER"
 
 [node name="WinLabel" type="Label" parent="HUD" unique_id=983419553]
 visible = false
-offset_left = 785.0
-offset_top = 389.0
-offset_right = 979.0
-offset_bottom = 412.0
+offset_left = 388.0
+offset_top = 370.0
+offset_right = 1358.0
+offset_bottom = 480.0
+theme_override_font_sizes/font_size = 80
 text = "ESCAPOU! VOCÊ VENCEU!"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=931859068]
