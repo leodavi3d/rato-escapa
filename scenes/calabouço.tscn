@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://bqp6pwfxra1oj"]
+
+[ext_resource type="Texture2D" uid="uid://do3q7gtcqaulv" path="res://assets/sprites/spr_bg.png" id="1_vperf"]
+[ext_resource type="Script" uid="uid://sbsulkqqfwop" path="res://scripts/rato.gd" id="2_gpuiu"]
+[ext_resource type="Texture2D" uid="uid://4g3624w0f8vc" path="res://assets/sprites/spr_rato.png" id="2_ntk3l"]
+[ext_resource type="Texture2D" uid="uid://dkw40ygcpu5ml" path="res://assets/sprites/spr_queijo.png" id="3_gpuiu"]
+[ext_resource type="Texture2D" uid="uid://2xujw7j42a73" path="res://assets/sprites/spr_gato.png" id="4_jp3c8"]
+
+[node name="Calabouço" type="Node2D" unique_id=585464005]
+
+[node name="SprBg" type="Sprite2D" parent="." unique_id=1097385544]
+texture = ExtResource("1_vperf")
+centered = false
+
+[node name="Rato" type="Area2D" parent="." unique_id=918547447]
+script = ExtResource("2_gpuiu")
+
+[node name="Sprite2D" type="Sprite2D" parent="Rato" unique_id=1460916317]
+scale = Vector2(0.26190478, 0.26190478)
+texture = ExtResource("2_ntk3l")
+offset = Vector2(-40, -120)
+
+[node name="Queijo1" type="Area2D" parent="." unique_id=1809526614]
+position = Vector2(1378, 365)
+
+[node name="Sprite2D" type="Sprite2D" parent="Queijo1" unique_id=763842651]
+texture = ExtResource("3_gpuiu")
+
+[node name="Queijo2" type="Area2D" parent="." unique_id=1645320659]
+position = Vector2(760, 238)
+
+[node name="Sprite2D" type="Sprite2D" parent="Queijo2" unique_id=1225503488]
+texture = ExtResource("3_gpuiu")
+
+[node name="Queijo3" type="Area2D" parent="." unique_id=508518995]
+position = Vector2(194, 662)
+
+[node name="Sprite2D" type="Sprite2D" parent="Queijo3" unique_id=307707394]
+texture = ExtResource("3_gpuiu")
+
+[node name="Gato" type="Area2D" parent="." unique_id=886025468]
+
+[node name="Sprite2D" type="Sprite2D" parent="Gato" unique_id=1469630113]
+position = Vector2(366, 463)
+texture = ExtResource("4_jp3c8")
