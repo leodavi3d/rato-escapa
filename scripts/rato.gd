@@ -21,6 +21,18 @@ const OFFSET_Y: int = 50
 var ratox: int = 750
 var ratoy: int = 100
 
+var score = 0
+@onready var score_label: Label = $"../HUD/ScoreLabel"
+
+var vivo: bool = true
+@onready var game_over_label: Label = $"../HUD/GameOverLabel"
+
+@onready var win_label: Label = $"../HUD/WinLabel"
+
+@export var textura_porta_aberta: Texture2D
+
+@onready var porta_sprite: Sprite2D = $"../Porta/Sprite2D"
+
 # -----------------------------------------------------
 # DESAFIO 1: Declare o Array de Paredes
 # -----------------------------------------------------
@@ -28,7 +40,35 @@ var ratoy: int = 100
 # PASSO ÚNICO: 
 # Crie uma variável chamada 'paredes' que seja tipada como um Array[Vector2].
 
-var paredes: Array[Vector2] = [Vector2(725, 100), Vector2(750, -50)]
+var paredes: Array[Vector2] = [
+	# -- Pilastra top-right --
+	Vector2(725, 100), Vector2(725, 50), Vector2(700, 100), Vector2(700, 50),
+	# -- Pilastra bottom-right --
+	Vector2(700, 325), Vector2(700, 350), Vector2(725, 325), Vector2(725, 350),
+	# -- Pilastra bottom-left --
+	Vector2(125, 500), Vector2(150, 500), Vector2(175, 500),
+	# -- Pilastra top-left --
+	Vector2(125, 50), Vector2(125, 100), Vector2(150, 50), Vector2(150, 100), Vector2(175, 50), Vector2(175, 100),
+	# -- Plaque bottom-right --
+	Vector2(650, 500), Vector2(650, 550), Vector2(675, 500), Vector2(675, 550),
+
+	# -- River top --
+	Vector2(550, 0), Vector2(575, 0), Vector2(600, 0), 
+	Vector2(550, 50), Vector2(575, 50), Vector2(600, 50),
+	Vector2(425, 100), Vector2(450, 100), Vector2(475, 100), Vector2(500, 100), Vector2(525, 100), Vector2(550, 100), Vector2(575, 100), Vector2(600, 100),
+	Vector2(425, 150), Vector2(450, 150), Vector2(475, 150),
+	Vector2(425, 200), Vector2(450, 200), Vector2(475, 200),
+	Vector2(325, 250), Vector2(350, 250), Vector2(375, 250), Vector2(400, 250), Vector2(425, 250), Vector2(450, 250), Vector2(475, 250), Vector2(500, 250), Vector2(525, 250), Vector2(550, 250),
+	Vector2(325, 300), Vector2(350, 300), Vector2(375, 300), Vector2(400, 300), Vector2(425, 300), Vector2(450, 300), Vector2(475, 300), Vector2(500, 300), Vector2(525, 300), Vector2(550, 300),
+
+	# -- River down --
+	Vector2(275, 400), Vector2(300, 400), Vector2(325, 400), Vector2(350, 400), Vector2(375, 400), Vector2(400, 400), Vector2(425, 400), Vector2(450, 400), Vector2(475, 400),
+	Vector2(275, 450), Vector2(300, 450), Vector2(325, 450), Vector2(350, 450), Vector2(375, 450), Vector2(450, 450), Vector2(425, 450), Vector2(450, 450), Vector2(475, 450),
+	Vector2(275, 500), Vector2(300, 500), Vector2(325, 500), Vector2(350, 500), Vector2(375, 500), Vector2(400, 500), Vector2(425, 500), Vector2(450, 500), Vector2(475, 500), Vector2(500, 500), Vector2(525, 500), Vector2(550, 500), Vector2(575, 500), Vector2(600, 500),
+	Vector2(275, 550), Vector2(300, 550), Vector2(325, 550), Vector2(350, 550), Vector2(375, 550), Vector2(400, 550), Vector2(425, 550), Vector2(450, 550), Vector2(475, 550), Vector2(550, 550), Vector2(575, 550), Vector2(600, 550),
+	Vector2(550, 600), Vector2(575, 600), Vector2(600, 600),
+	]
+
 # Dentro dos colchetes [ ], adicione dois objetos Vector2():
 # 1. O quadrado vermelho que está imediatamente à esquerda do Rato (olhe no seu mapa do Photoshop).
 # 2. O quadrado vermelho que está imediatamente acima do Rato.
@@ -46,44 +86,29 @@ func _ready() -> void:
 # DESAFIO 3: O Segurança Universal (Regra DRY)
 # -----------------------------------------------------
 
-# PASSO 1: Fora da função _unhandled_input (pode ser lá embaixo no script), 
-# crie uma nova função chamada 'tentar_mover'.
-# Ela deve receber três argumentos: alvo_x (int), alvo_y (int) e espelhar (bool).
-
-# PASSO 2: Dentro dessa nova função 'tentar_mover', repita a sua lógica genial.
-# Crie a variável 'destino' empacotando o alvo_x e alvo_y no Vector2.
-
-# PASSO 3: Faça a checagem 'if not paredes.has(destino):'.
-# DENTRO desse 'if', atualize a variável global 'ratox' recebendo o 'alvo_x', 
-# o 'ratoy' recebendo o 'alvo_y', e o sprite.flip_h recebendo o 'espelhar'.
-# Em seguida, ainda dentro do 'if', chame atualizar_posicao_visual() e imprimir_status().
-
-# PASSO 4: Agora, volte lá na sua função _unhandled_input.
-# Dentro do 'elif event.is_action_pressed("ui_left"):', você só precisa de UMA linha de código.
-# Chame a função tentar_mover(), passando os cálculos matemáticos direto dentro dos parênteses.
-# Exemplo para a esquerda: tentar_mover(ratox - PASSO_LOGICO_X, ratoy, true)
-
-# PASSO 5: Faça o mesmo para as outras três direções (direita, cima, baixo), 
-# ajustando apenas a matemática do X, do Y e o true/false do espelhamento do rato.
-
 func tentar_mover(alvo_x: int, alvo_y: int, espelhar: bool ) -> void:
 
-	# -----------------------------------------------------
-# DESAFIO 4: A Cerca Elétrica (Limites do Mapa)
-# -----------------------------------------------------
-
-	if (alvo_x < 0 or alvo_x > 800):
+	if vivo == false:
 		return
 
-	if (alvo_y < 0 or alvo_y > 600):
+	# 1. CERCA ELÉTRICA COM PASSE VIP PARA A PORTA
+	if alvo_x == -25 and alvo_y == 350:
+		if score < 4:
+			return # Porta trancada
+	elif alvo_x < 0 or alvo_x > 800:
+		return # Bateu na lateral do mapa
+
+	# Limite de Cima e Baixo (Continua normal)
+	if alvo_y < 0 or alvo_y > 600:
 		return
 
+	# 2. PRANCHETA DO SEGURANÇA (Obstáculos Internos)
 	var destino = Vector2(alvo_x, alvo_y)
 
 	if not paredes.has(destino):
 		ratox = alvo_x
 		ratoy = alvo_y
-		sprite.flip_h = espelhar		
+		sprite.flip_h = espelhar        
 		atualizar_posicao_visual()
 		imprimir_status()
 
@@ -128,3 +153,24 @@ func atualizar_posicao_visual() -> void:
 
 func imprimir_status() -> void:
 	print("Coordenada Lógica -> X: ", ratox, " | Y: ", ratoy)
+
+
+func _on_area_entered(area: Area2D) -> void:
+	if area.is_in_group("cheese"):
+		score = score + 1
+		# Usamos .text para mudar apenas o que está escrito na tela
+		score_label.text = str(score) 
+		area.queue_free()
+		
+		if score == 4:
+			porta_sprite.texture = textura_porta_aberta
+	
+	elif area.is_in_group("enemy"):
+		vivo = false
+		sprite.hide()
+		game_over_label.show()
+
+	elif area.is_in_group("exit"):
+		vivo = false
+		sprite.hide()
+		win_label.show()

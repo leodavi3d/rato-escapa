@@ -1,45 +1,144 @@
 [gd_scene format=3 uid="uid://bqp6pwfxra1oj"]
 
-[ext_resource type="Texture2D" uid="uid://do3q7gtcqaulv" path="res://assets/sprites/spr_bg.png" id="1_vperf"]
-[ext_resource type="Script" uid="uid://sbsulkqqfwop" path="res://scripts/rato.gd" id="2_gpuiu"]
-[ext_resource type="Texture2D" uid="uid://4g3624w0f8vc" path="res://assets/sprites/spr_rato.png" id="2_ntk3l"]
-[ext_resource type="Texture2D" uid="uid://dkw40ygcpu5ml" path="res://assets/sprites/spr_queijo.png" id="3_gpuiu"]
-[ext_resource type="Texture2D" uid="uid://2xujw7j42a73" path="res://assets/sprites/spr_gato.png" id="4_jp3c8"]
+[ext_resource type="Texture2D" uid="uid://do3q7gtcqaulv" path="res://assets/sprites/spr_bg.png" id="1_0wxku"]
+[ext_resource type="Script" uid="uid://sbsulkqqfwop" path="res://scripts/rato.gd" id="2_nw0m0"]
+[ext_resource type="Texture2D" uid="uid://4g3624w0f8vc" path="res://assets/sprites/spr_rato.png" id="3_djvhi"]
+[ext_resource type="Texture2D" uid="uid://dhurqyvvw5t4y" path="res://assets/sprites/spr_door_opened.png" id="3_m7yi2"]
+[ext_resource type="Texture2D" uid="uid://2xujw7j42a73" path="res://assets/sprites/spr_gato.png" id="4_m7yi2"]
+[ext_resource type="Script" uid="uid://ysfuk5r3q5xs" path="res://scripts/gato.gd" id="5_nw0m0"]
+[ext_resource type="Texture2D" uid="uid://dkw40ygcpu5ml" path="res://assets/sprites/spr_queijo.png" id="5_vuuh0"]
+[ext_resource type="Texture2D" uid="uid://bdfa8lrv88hff" path="res://assets/sprites/spr_door_closed.png" id="7_djvhi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_216sk"]
+size = Vector2(41.415928, 23.097345)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_foqwp"]
+size = Vector2(102, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mjvqx"]
+size = Vector2(151, 134)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_djvhi"]
+size = Vector2(23, 58)
 
 [node name="Calabouço" type="Node2D" unique_id=585464005]
 
 [node name="SprBg" type="Sprite2D" parent="." unique_id=1097385544]
-texture = ExtResource("1_vperf")
+texture = ExtResource("1_0wxku")
 centered = false
 
 [node name="Rato" type="Area2D" parent="." unique_id=918547447]
-script = ExtResource("2_gpuiu")
+script = ExtResource("2_nw0m0")
+textura_porta_aberta = ExtResource("3_m7yi2")
 
 [node name="Sprite2D" type="Sprite2D" parent="Rato" unique_id=1460916317]
 scale = Vector2(0.26190478, 0.26190478)
-texture = ExtResource("2_ntk3l")
+texture = ExtResource("3_djvhi")
 offset = Vector2(-40, -120)
 
-[node name="Queijo1" type="Area2D" parent="." unique_id=1809526614]
-position = Vector2(1378, 365)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rato" unique_id=1215771179]
+position = Vector2(16.5, -30.625)
+scale = Vector2(2.825, 2.825)
+shape = SubResource("RectangleShape2D_216sk")
 
-[node name="Sprite2D" type="Sprite2D" parent="Queijo1" unique_id=763842651]
-texture = ExtResource("3_gpuiu")
+[node name="Queijo1" type="Area2D" parent="." unique_id=238313465 groups=["cheese"]]
+position = Vector2(1102, 308)
+scale = Vector2(0.8, 0.8)
 
-[node name="Queijo2" type="Area2D" parent="." unique_id=1645320659]
-position = Vector2(760, 238)
+[node name="Sprite2D" type="Sprite2D" parent="Queijo1" unique_id=817579310]
+texture = ExtResource("5_vuuh0")
 
-[node name="Sprite2D" type="Sprite2D" parent="Queijo2" unique_id=1225503488]
-texture = ExtResource("3_gpuiu")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Queijo1" unique_id=2082093275]
+shape = SubResource("RectangleShape2D_foqwp")
 
-[node name="Queijo3" type="Area2D" parent="." unique_id=508518995]
-position = Vector2(194, 662)
+[node name="Queijo2" type="Area2D" parent="." unique_id=1440979839 groups=["cheese"]]
+position = Vector2(851, 311)
+scale = Vector2(0.8, 0.8)
 
-[node name="Sprite2D" type="Sprite2D" parent="Queijo3" unique_id=307707394]
-texture = ExtResource("3_gpuiu")
+[node name="Sprite2D" type="Sprite2D" parent="Queijo2" unique_id=19316353]
+texture = ExtResource("5_vuuh0")
 
-[node name="Gato" type="Area2D" parent="." unique_id=886025468]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Queijo2" unique_id=920660176]
+shape = SubResource("RectangleShape2D_foqwp")
 
-[node name="Sprite2D" type="Sprite2D" parent="Gato" unique_id=1469630113]
-position = Vector2(366, 463)
-texture = ExtResource("4_jp3c8")
+[node name="Queijo3" type="Area2D" parent="." unique_id=899420181 groups=["cheese"]]
+position = Vector2(1098, 713)
+scale = Vector2(0.8, 0.8)
+
+[node name="Sprite2D" type="Sprite2D" parent="Queijo3" unique_id=1627198016]
+texture = ExtResource("5_vuuh0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Queijo3" unique_id=1512706435]
+shape = SubResource("RectangleShape2D_foqwp")
+
+[node name="Queijo4" type="Area2D" parent="." unique_id=41986983 groups=["cheese"]]
+position = Vector2(105.00006, 703)
+scale = Vector2(0.8, 0.8)
+
+[node name="Sprite2D" type="Sprite2D" parent="Queijo4" unique_id=697765860]
+texture = ExtResource("5_vuuh0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Queijo4" unique_id=865068836]
+shape = SubResource("RectangleShape2D_foqwp")
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=2098287004]
+
+[node name="ScoreLabel" type="Label" parent="HUD" unique_id=1766464429]
+offset_left = 84.0
+offset_top = 38.0
+offset_right = 124.0
+offset_bottom = 61.0
+offset_transform_enabled = true
+offset_transform_scale = Vector2(2.96, 2.96)
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameOverLabel" type="Label" parent="HUD" unique_id=1995139672]
+visible = false
+offset_left = 830.0
+offset_top = 385.0
+offset_right = 922.0
+offset_bottom = 408.0
+offset_transform_scale = Vector2(6.495, 6.495)
+text = "GAME OVER"
+
+[node name="WinLabel" type="Label" parent="HUD" unique_id=983419553]
+visible = false
+offset_left = 785.0
+offset_top = 389.0
+offset_right = 979.0
+offset_bottom = 412.0
+text = "ESCAPOU! VOCÊ VENCEU!"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=931859068]
+position = Vector2(54.000008, 51)
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("5_vuuh0")
+
+[node name="Gato" type="Area2D" parent="." unique_id=1317377881 groups=["enemy"]]
+script = ExtResource("5_nw0m0")
+
+[node name="Sprite2D" type="Sprite2D" parent="Gato" unique_id=1818133375 groups=["enemy"]]
+texture = ExtResource("4_m7yi2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gato" unique_id=632031397]
+position = Vector2(4.5, 0)
+shape = SubResource("RectangleShape2D_mjvqx")
+
+[node name="Timer" type="Timer" parent="Gato" unique_id=1141371966]
+wait_time = 0.349
+autostart = true
+
+[node name="Porta" type="Area2D" parent="." unique_id=17320531 groups=["exit"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="Porta" unique_id=244863668 groups=["exit"]]
+position = Vector2(21, 491)
+texture = ExtResource("7_djvhi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Porta" unique_id=1841404096 groups=["exit"]]
+position = Vector2(10.5, 491)
+shape = SubResource("RectangleShape2D_djvhi")
+
+[connection signal="area_entered" from="Rato" to="Rato" method="_on_area_entered"]
+[connection signal="timeout" from="Gato/Timer" to="Gato" method="_on_timer_timeout"]
