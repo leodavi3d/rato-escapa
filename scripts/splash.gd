@@ -17,19 +17,12 @@ func _ready() -> void:
 	if not MusicaTema.playing:
 		MusicaTema.play()
 
-# -----------------------------------------------------
-# DESAFIO 11: O Botão de Start e a Troca de Cena
-# -----------------------------------------------------
-
-# Esta função SERÁ CHAMADA PELO ANIMATIONPLAYER no exato momento 
-# em que a tela final de Title Screen acabar de aparecer na tela.
 func liberar_start() -> void:
 	print("GATILHO FUNCIONOU! O Start está liberado.")
 	pode_iniciar = true
 	timer_pisca.start()
 
-func _unhandled_input(event: InputEvent) -> void:
-	# PASSO 1: O Filtro do Start	
+func _unhandled_input(event: InputEvent) -> void:	
 	if pode_iniciar and event.is_pressed() and event.is_action("ui_accept"):
 		pode_iniciar = false
 		timer_pisca.stop()

@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Rato_Escapa"
+run/main_scene="uid://b5uhstkepk2f7"
 config/features=PackedStringArray("4.7", "Mobile")
 config/icon="res://icon.svg"
 
@@ -33,3 +34,4 @@ window/stretch/aspect="expand"
 
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true

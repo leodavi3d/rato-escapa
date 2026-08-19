@@ -1,9 +1,5 @@
 extends Area2D
 
-# -------------------------------------------------------------
-# 1. AS REGRAS DO SEU BLOCKOUT (Game Design)
-# -------------------------------------------------------------
-# Quantos pontos a variável ganha/perde a cada clique
 const PASSO_LOGICO_X: int = 25 
 const PASSO_LOGICO_Y: int = 50 
 
@@ -14,10 +10,6 @@ const PASSO_VISUAL_PX: int = 50
 const OFFSET_X: int = 50
 const OFFSET_Y: int = 50
 
-# -------------------------------------------------------------
-# 2. A POSIÇÃO LÓGICA DO RATO (A Mente do Jogo)
-# -------------------------------------------------------------
-# Exatamente as coordenadas da casa onde você escreveu "Rato"
 var ratox: int = 750
 var ratoy: int = 100
 
@@ -32,13 +24,6 @@ var vivo: bool = true
 
 @onready var sfx_comer: AudioStreamPlayer = $SFX_Comer
 @onready var bgm_fase1: AudioStreamPlayer = %BGM_Fase1
-
-# -----------------------------------------------------
-# DESAFIO 1: Declare o Array de Paredes
-# -----------------------------------------------------
-
-# PASSO ÚNICO: 
-# Crie uma variável chamada 'paredes' que seja tipada como um Array[Vector2].
 
 var paredes: Array[Vector2] = [
 	# -- Pilastra top-right --
@@ -69,11 +54,6 @@ var paredes: Array[Vector2] = [
 	Vector2(550, 600), Vector2(575, 600), Vector2(600, 600),
 	]
 
-# Dentro dos colchetes [ ], adicione dois objetos Vector2():
-# 1. O quadrado vermelho que está imediatamente à esquerda do Rato (olhe no seu mapa do Photoshop).
-# 2. O quadrado vermelho que está imediatamente acima do Rato.
-# Lembre-se de separar os dois Vector2() por uma vírgula.
-
 @onready var sprite: Sprite2D = $Sprite2D
 
 func _ready() -> void:
@@ -81,10 +61,6 @@ func _ready() -> void:
 	sprite.flip_h = true
 	atualizar_posicao_visual()
 	imprimir_status()
-
-# -----------------------------------------------------
-# DESAFIO 3: O Segurança Universal (Regra DRY)
-# -----------------------------------------------------
 
 func tentar_mover(alvo_x: int, alvo_y: int, espelhar: bool ) -> void:
 
@@ -102,7 +78,7 @@ func tentar_mover(alvo_x: int, alvo_y: int, espelhar: bool ) -> void:
 	if alvo_y < 0 or alvo_y > 600:
 		return
 
-	# 2. PRANCHETA DO SEGURANÇA (Obstáculos Internos)
+	# 2. (Obstáculos Internos)
 	var destino = Vector2(alvo_x, alvo_y)
 
 	if not paredes.has(destino):
@@ -129,31 +105,20 @@ func _unhandled_input(event: InputEvent) -> void:
 		
 	elif event.is_action_pressed("ui_up"):
 		tentar_mover(ratox, ratoy - PASSO_LOGICO_Y, sprite.flip_h)
-		
-
-	# Se uma seta foi pressionada, a tela obedece à lógica
-	#if moveu:
-	#	atualizar_posicao_visual()
-	#	imprimir_status()
 
 # -------------------------------------------------------------
 # 3. TRADUTOR: LÓGICA PARA TELA (O Motor Gráfico)
 # -------------------------------------------------------------
 func atualizar_posicao_visual() -> void:
-	# PASSO A: Descobrir em qual "coluna" e "linha" da malha verde o rato está.
-	# Ex: Se ratox = 750, então 750 / 25 = 30ª Coluna.
+
 	var colunas_x: int = ratox / PASSO_LOGICO_X
 	var linhas_y: int = ratoy / PASSO_LOGICO_Y
-	
-	# PASSO B: Multiplicar a coluna pelo tamanho do quadrado (50px).
-	# PASSO C: Somar o OFFSET (50px) para pular a parede vermelha.
-	# PASSO D: Somar 25px (metade do quadrado) para o pivô cravar no meio da casa.
+
 	position.x = OFFSET_X + (colunas_x * PASSO_VISUAL_PX) + 25
 	position.y = OFFSET_Y + (linhas_y * PASSO_VISUAL_PX) + 100
 
 func imprimir_status() -> void:
 	print("Coordenada Lógica -> X: ", ratox, " | Y: ", ratoy)
-
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("cheese"):
