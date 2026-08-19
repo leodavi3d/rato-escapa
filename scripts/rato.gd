@@ -25,13 +25,13 @@ var score = 0
 @onready var score_label: Label = $"../HUD/ScoreLabel"
 
 var vivo: bool = true
-@onready var game_over_label: Label = $"../HUD/GameOverLabel"
-
-@onready var win_label: Label = $"../HUD/WinLabel"
 
 @export var textura_porta_aberta: Texture2D
 
 @onready var porta_sprite: Sprite2D = $"../Porta/Sprite2D"
+
+@onready var sfx_comer: AudioStreamPlayer = $SFX_Comer
+@onready var bgm_fase1: AudioStreamPlayer = %BGM_Fase1
 
 # -----------------------------------------------------
 # DESAFIO 1: Declare o Array de Paredes
@@ -157,10 +157,10 @@ func imprimir_status() -> void:
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("cheese"):
-		score = score + 1
-		# Usamos .text para mudar apenas o que está escrito na tela
+		sfx_comer.play()
+		score = score + 1		
 		score_label.text = str(score) 
-		area.queue_free()
+		area.queue_free.call_deferred()
 		
 		if score == 4:
 			porta_sprite.texture = textura_porta_aberta
@@ -168,9 +168,17 @@ func _on_area_entered(area: Area2D) -> void:
 	elif area.is_in_group("enemy"):
 		vivo = false
 		sprite.hide()
-		game_over_label.show()
+		
+		bgm_fase1.stop()
+		if MusicaTema.playing:
+			MusicaTema.stop()
+		
+		get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 
 	elif area.is_in_group("exit"):
-		vivo = false
-		sprite.hide()
-		win_label.show()
+		
+		bgm_fase1.stop()
+		if MusicaTema.playing:
+			MusicaTema.stop()
+		
+		get_tree().change_scene_to_file("res://scenes/win_screen.tscn")

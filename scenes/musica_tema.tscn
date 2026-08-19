@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://sgb8gcxf0cs4"]
+
+[ext_resource type="AudioStream" uid="uid://ichlpi2af3lx" path="res://assets/musics/msc_Castle Dash_Panda Beats.mp3" id="1_7flq4"]
+
+[node name="MusicaTema" type="AudioStreamPlayer" unique_id=852438768]
+stream = ExtResource("1_7flq4")
+autoplay = true

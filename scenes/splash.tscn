@@ -1,0 +1,274 @@
+[gd_scene format=3 uid="uid://b5uhstkepk2f7"]
+
+[ext_resource type="Script" uid="uid://bxhtu4iyn0xrq" path="res://scripts/splash.gd" id="1_r4d6w"]
+[ext_resource type="Texture2D" uid="uid://4agmk3hxnpoy" path="res://assets/sprites/spr_godot.png" id="2_651hb"]
+[ext_resource type="Texture2D" uid="uid://cycrde68lblrw" path="res://assets/sprites/spr_ifrj.png" id="3_x1bu2"]
+[ext_resource type="Texture2D" uid="uid://b1mx1hejr3lyx" path="res://assets/sprites/spr_leodavi3d.png" id="4_440nw"]
+[ext_resource type="Texture2D" uid="uid://b7u15ved6muko" path="res://assets/sprites/bg_rato_escapa.png" id="5_3idxy"]
+[ext_resource type="Texture2D" uid="uid://cf3pjfvc5schl" path="res://assets/sprites/bg_rato_escapa_PS.png" id="6_arxou"]
+[ext_resource type="AudioStream" uid="uid://db5s4c6vkrx04" path="res://assets/musics/snd_start.mp3" id="7_tdut7"]
+[ext_resource type="FontFile" uid="uid://b6ddkkx4eyhc6" path="res://assets/fonts/itc-machine.otf" id="8_651hb"]
+
+[sub_resource type="Animation" id="Animation_x1bu2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LogoGodot:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LogoIFRJ:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LogoLeo:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ArtePura:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TitleScreen:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_440nw"]
+resource_name = "abertura"
+length = 12.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LogoGodot:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 1.5, 3, 3.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LogoIFRJ:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3.5, 4.5, 6, 6.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LogoLeo:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(6.5, 7.5, 9, 9.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ArtePura:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(9.5, 10.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TitleScreen:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(11, 12),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(11.966666),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"liberar_start"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3idxy"]
+_data = {
+&"RESET": SubResource("Animation_x1bu2"),
+&"abertura": SubResource("Animation_440nw")
+}
+
+[node name="SplashScreen" type="Control" unique_id=1930813577]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_r4d6w")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1119740465]
+layout_mode = 0
+offset_right = 1750.0
+offset_bottom = 800.0
+
+[node name="LogoGodot" type="TextureRect" parent="." unique_id=857052910]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -157.0
+offset_top = -157.0
+offset_right = 157.0
+offset_bottom = 157.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_651hb")
+expand_mode = 1
+
+[node name="LogoIFRJ" type="TextureRect" parent="." unique_id=2047559091]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -159.0
+offset_top = -163.0
+offset_right = 377.0
+offset_bottom = 375.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.59, 0.59)
+texture = ExtResource("3_x1bu2")
+
+[node name="LogoLeo" type="TextureRect" parent="." unique_id=694438310]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -191.0
+offset_top = -32.0
+offset_right = 1739.0
+offset_bottom = 252.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_440nw")
+
+[node name="ArtePura" type="TextureRect" parent="." unique_id=550215215]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 1750.0
+offset_bottom = 800.0
+texture = ExtResource("5_3idxy")
+expand_mode = 1
+
+[node name="TitleScreen" type="TextureRect" parent="." unique_id=1963400748]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 1750.0
+offset_bottom = 800.0
+texture = ExtResource("6_arxou")
+expand_mode = 1
+
+[node name="SFXStart" type="AudioStreamPlayer" parent="." unique_id=767641546]
+stream = ExtResource("7_tdut7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1077756147]
+libraries/ = SubResource("AnimationLibrary_3idxy")
+
+[node name="PressStartLabel" type="Label" parent="." unique_id=1159519363]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -541.0
+offset_top = -217.0
+offset_right = -77.0
+offset_bottom = -145.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.8, 0.29411766, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 0.8745098, 0, 0)
+theme_override_colors/font_outline_color = Color(0.94538623, 0.8244468, 0.2638847, 1)
+theme_override_constants/line_spacing = 3
+theme_override_constants/paragraph_spacing = 0
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/outline_size = 14
+theme_override_fonts/font = ExtResource("8_651hb")
+theme_override_font_sizes/font_size = 60
+text = "PRESS START"
+
+[node name="TimerPisca" type="Timer" parent="." unique_id=2125536728]
+wait_time = 0.5
+
+[connection signal="timeout" from="TimerPisca" to="." method="_on_timer_pisca_timeout"]

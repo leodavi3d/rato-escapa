@@ -14,6 +14,10 @@ config/name="Rato_Escapa"
 config/features=PackedStringArray("4.7", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+MusicaTema="*uid://sgb8gcxf0cs4"
+
 [display]
 
 window/size/viewport_width=1750

@@ -1,0 +1,145 @@
+[gd_scene format=3 uid="uid://bqp6pwfxra1oj"]
+
+[ext_resource type="Texture2D" uid="uid://do3q7gtcqaulv" path="res://assets/sprites/spr_bg.png" id="1_gmbfh"]
+[ext_resource type="Script" uid="uid://sbsulkqqfwop" path="res://scripts/rato.gd" id="2_6611d"]
+[ext_resource type="Texture2D" uid="uid://dhurqyvvw5t4y" path="res://assets/sprites/spr_door_opened.png" id="3_nilck"]
+[ext_resource type="Texture2D" uid="uid://4g3624w0f8vc" path="res://assets/sprites/spr_rato.png" id="4_u6b78"]
+[ext_resource type="AudioStream" uid="uid://c647tufrras3s" path="res://assets/musics/snd_cheese_floraphonic-cute-level-up-3-189853.mp3" id="5_6611d"]
+[ext_resource type="Texture2D" uid="uid://dkw40ygcpu5ml" path="res://assets/sprites/spr_queijo.png" id="5_hexrm"]
+[ext_resource type="Script" uid="uid://ysfuk5r3q5xs" path="res://scripts/gato.gd" id="6_d1phx"]
+[ext_resource type="AudioStream" uid="uid://bnifhhxcqio4r" path="res://assets/musics/snd_win_pw23check-winning-218995.mp3" id="6_nilck"]
+[ext_resource type="Texture2D" uid="uid://2xujw7j42a73" path="res://assets/sprites/spr_gato.png" id="7_llqcq"]
+[ext_resource type="AudioStream" uid="uid://6b1c70hqyimb" path="res://assets/musics/snd_game_over_phatphrogstudio-defeat-outros-game-sounds-collection-477823.mp3" id="7_u6b78"]
+[ext_resource type="Texture2D" uid="uid://bdfa8lrv88hff" path="res://assets/sprites/spr_door_closed.png" id="8_d8dix"]
+[ext_resource type="AudioStream" uid="uid://bclud8uwwu7oj" path="res://assets/musics/msc_1_1_Press Play_Panda Beats.mp3" id="9_8bxuh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_216sk"]
+size = Vector2(41.415928, 23.097345)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_foqwp"]
+size = Vector2(102, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mjvqx"]
+size = Vector2(151, 134)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_djvhi"]
+size = Vector2(23, 58)
+
+[node name="Calabouço" type="Node2D" unique_id=585464005]
+
+[node name="SprBg" type="Sprite2D" parent="." unique_id=1097385544]
+texture = ExtResource("1_gmbfh")
+centered = false
+
+[node name="Rato" type="Area2D" parent="." unique_id=918547447]
+script = ExtResource("2_6611d")
+textura_porta_aberta = ExtResource("3_nilck")
+
+[node name="Sprite2D" type="Sprite2D" parent="Rato" unique_id=1460916317]
+scale = Vector2(0.26190478, 0.26190478)
+texture = ExtResource("4_u6b78")
+offset = Vector2(-40, -120)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rato" unique_id=1215771179]
+position = Vector2(16.5, -30.625)
+scale = Vector2(2.825, 2.825)
+shape = SubResource("RectangleShape2D_216sk")
+
+[node name="SFX_Comer" type="AudioStreamPlayer" parent="Rato" unique_id=1242283578]
+stream = ExtResource("5_6611d")
+
+[node name="SFX_Vitoria" type="AudioStreamPlayer" parent="Rato" unique_id=383745897]
+stream = ExtResource("6_nilck")
+
+[node name="SFX_Derrota" type="AudioStreamPlayer" parent="Rato" unique_id=1105240381]
+stream = ExtResource("7_u6b78")
+
+[node name="Queijo1" type="Area2D" parent="." unique_id=238313465 groups=["cheese"]]
+position = Vector2(1102, 308)
+scale = Vector2(0.8, 0.8)
+
+[node name="Sprite2D" type="Sprite2D" parent="Queijo1" unique_id=817579310]
+texture = ExtResource("5_hexrm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Queijo1" unique_id=2082093275]
+shape = SubResource("RectangleShape2D_foqwp")
+
+[node name="Queijo2" type="Area2D" parent="." unique_id=1440979839 groups=["cheese"]]
+position = Vector2(851, 311)
+scale = Vector2(0.8, 0.8)
+
+[node name="Sprite2D" type="Sprite2D" parent="Queijo2" unique_id=19316353]
+texture = ExtResource("5_hexrm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Queijo2" unique_id=920660176]
+shape = SubResource("RectangleShape2D_foqwp")
+
+[node name="Queijo3" type="Area2D" parent="." unique_id=899420181 groups=["cheese"]]
+position = Vector2(1098, 713)
+scale = Vector2(0.8, 0.8)
+
+[node name="Sprite2D" type="Sprite2D" parent="Queijo3" unique_id=1627198016]
+texture = ExtResource("5_hexrm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Queijo3" unique_id=1512706435]
+shape = SubResource("RectangleShape2D_foqwp")
+
+[node name="Queijo4" type="Area2D" parent="." unique_id=41986983 groups=["cheese"]]
+position = Vector2(105.00006, 703)
+scale = Vector2(0.8, 0.8)
+
+[node name="Sprite2D" type="Sprite2D" parent="Queijo4" unique_id=697765860]
+texture = ExtResource("5_hexrm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Queijo4" unique_id=865068836]
+shape = SubResource("RectangleShape2D_foqwp")
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=2098287004]
+
+[node name="ScoreLabel" type="Label" parent="HUD" unique_id=1766464429]
+offset_left = 84.0
+offset_top = 38.0
+offset_right = 124.0
+offset_bottom = 61.0
+offset_transform_enabled = true
+offset_transform_scale = Vector2(2.96, 2.96)
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=931859068]
+position = Vector2(54.000008, 51)
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("5_hexrm")
+
+[node name="Gato" type="Area2D" parent="." unique_id=1317377881 groups=["enemy"]]
+script = ExtResource("6_d1phx")
+
+[node name="Sprite2D" type="Sprite2D" parent="Gato" unique_id=1818133375 groups=["enemy"]]
+texture = ExtResource("7_llqcq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gato" unique_id=632031397]
+position = Vector2(4.5, 0)
+shape = SubResource("RectangleShape2D_mjvqx")
+
+[node name="Timer" type="Timer" parent="Gato" unique_id=1141371966]
+wait_time = 0.349
+autostart = true
+
+[node name="Porta" type="Area2D" parent="." unique_id=17320531 groups=["exit"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="Porta" unique_id=244863668 groups=["exit"]]
+position = Vector2(21, 491)
+texture = ExtResource("8_d8dix")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Porta" unique_id=1841404096 groups=["exit"]]
+position = Vector2(10.5, 491)
+shape = SubResource("RectangleShape2D_djvhi")
+
+[node name="BGM_Fase1" type="AudioStreamPlayer" parent="." unique_id=436394665]
+unique_name_in_owner = true
+stream = ExtResource("9_8bxuh")
+autoplay = true
+
+[connection signal="area_entered" from="Rato" to="Rato" method="_on_area_entered"]
+[connection signal="timeout" from="Gato/Timer" to="Gato" method="_on_timer_timeout"]

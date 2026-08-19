@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ds7u0vrbd7k6"
+path="res://.godot/imported/msc_Castle Dash_Panda Beats.mp3-82ec29ebf71bbfa5b38f3bbbf6b6c99a.mp3str"
+
+[deps]
+
+source_file="res://assets/sprites/msc_Castle Dash_Panda Beats.mp3"
+dest_files=["res://.godot/imported/msc_Castle Dash_Panda Beats.mp3-82ec29ebf71bbfa5b38f3bbbf6b6c99a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
