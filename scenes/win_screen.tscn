@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bnrkjot8brr3h" path="res://assets/sprites/bg_win.jpg" id="2_0lrm4"]
 [ext_resource type="FontFile" uid="uid://b6ddkkx4eyhc6" path="res://assets/fonts/itc-machine.otf" id="3_6s1kg"]
 [ext_resource type="AudioStream" uid="uid://bnifhhxcqio4r" path="res://assets/musics/snd_win_pw23check-winning-218995.mp3" id="4_bqn3h"]
+[ext_resource type="Texture2D" uid="uid://c63rt7dqr5j2e" path="res://assets/sprites/rato_desafio.png" id="5_0lrm4"]
 
 [node name="Control" type="Control" unique_id=1022705757]
 layout_mode = 3
@@ -43,3 +44,60 @@ vertical_alignment = 1
 [node name="SFX_Vitoria_Cena" type="AudioStreamPlayer" parent="." unique_id=519187560]
 stream = ExtResource("4_bqn3h")
 autoplay = true
+
+[node name="AboutPanel" type="Control" parent="." unique_id=1415470271]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="AboutPanel" unique_id=1558193778]
+layout_mode = 0
+offset_left = 92.0
+offset_top = 133.0
+offset_right = 793.0
+offset_bottom = 707.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 21
+bbcode_enabled = true
+text = "\"Rato Escapa\" é um jogo grid-based de puzzle desenvolvido na Godot Engine 4. Projeto idealizado a partir do exercício de lógica no PDF da aula 1 de Programação de Jogos 2d, professor André Brazil, CST Jogos Digitais, IFRJ Campus Paulo de Frontin, onde declaramos a posição X e Y do rato para que ele pegue o queijo e escape do calabouço antes de ser pego pelo gato.
+
+* **Engine:** Godot 4.x
+* **Linguagem:** GDScript
+* **Arte:** Imagem do exercício / Adobe Photoshop / Gemini 
+* **Level Design:** ChatGPT/Gemini para elaboração da matemática vetorial.
+
+Músicas: 
+Press Play, Panda Beats
+Castle Dash, Panda Beats
+
+FX: pixabay"
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="AboutPanel" unique_id=1091588178]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 808.0
+offset_top = 145.0
+offset_right = -89.0
+offset_bottom = -178.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_0lrm4")
+expand_mode = 1
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="AboutPanel" unique_id=1728380099]
+layout_mode = 0
+offset_left = 664.0
+offset_top = 52.0
+offset_right = 1460.0
+offset_bottom = 395.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "SOBRE O JOGO"
